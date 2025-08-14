@@ -2,5 +2,5 @@
 Small projects made for multimedia basics course including:
 
 # Signal Processing and Spectral Analysis
-![1](./signal%20analysis/lab1.ipynb)
+[Lab 1 - Signal Analysis](./signal%20processing/lab1.ipynb)
 
