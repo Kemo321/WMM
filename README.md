@@ -8,3 +8,5 @@ Small projects made for multimedia basics course including:
 -   [Lab 5](./image%20processing%201/lab5.ipynb)
 # Face recognition
 -   [Lab 7](./face%20recognition/lab7.ipynb)
+# Computer graphics
+-   [Lab 8](./computer%20graphics/README.md)
