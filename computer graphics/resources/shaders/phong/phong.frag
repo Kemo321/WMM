@@ -14,22 +14,22 @@ const vec3 light_diffuse = vec3(1.0, 1.0, 1.0);
 const vec3 light_specular = vec3(1.0, 1.0, 1.0);
 
 void main() {
-    // Składnik ambient (otoczenia)
+    // Ambient component
     vec3 ambient = light_ambient * material_ambient;
 
-    // Składnik diffuse (rozproszenia)
-    vec3 N = normalize(v_normal); // normalizacja wektora normalnego
-    vec3 L = normalize(light_position - v_position); // wektor do źródła światła
-    float cosNL = clamp(dot(N, L), 0.0, 1.0); // iloczyn skalarny normalnej i światła
+    // Diffuse component
+    vec3 N = normalize(v_normal); // normalize normal vector
+    vec3 L = normalize(light_position - v_position); // vector to light source
+    float cosNL = clamp(dot(N, L), 0.0, 1.0); // dot product of normal and light
     vec3 diffuse = light_diffuse * material_diffuse * cosNL;
 
-    // Składnik specular (odbicia zwierciadlanego)
-    vec3 V = normalize(camera_position - v_position); // wektor do kamery
-    vec3 R = reflect(-L, N); // wektor odbicia
-    float spec = pow(max(dot(V, R), 0.0), material_shininess); // siła odbicia
+    // Specular component
+    vec3 V = normalize(camera_position - v_position); // vector to camera
+    vec3 R = reflect(-L, N); // reflection vector
+    float spec = pow(max(dot(V, R), 0.0), material_shininess); // specular strength
     vec3 specular = light_specular * spec;
 
-    // Ostateczny kolor (wszystkie składniki razem)
+    // Final color (all components together)
     vec3 phong_color = clamp(ambient + diffuse + specular, 0.0, 1.0);
     f_color = vec4(phong_color, 1.0);
 }
